@@ -13,16 +13,17 @@ export class PlayFieldGridComponent implements OnInit {
 
   constructor() { 
     this. fGrid = new PlayFieldGrid();
+    this.fGrid.columns = 4;
+    this.fGrid.rows = 6;
 
-
-    for(let i = 0; i < 5; i++){
+    for(let i = 0; i < this.fGrid.rows; i++){
       this.fGrid.FieldGrid.push([]);
 
-      for(let j = 0; j < 5; j++){
+      for(let j = 0; j < this.fGrid.columns; j++){
         if(i == 0)
           this.fGrid.FieldGrid[i][j] = "assets/pics/catgirl2.jpg";  
         else
-          this.fGrid.FieldGrid[i][j] = "assets/pics/catgirl2.jpg";  
+          this.fGrid.FieldGrid[i][j] = "assets/pics/catgirl.png";  
       }
     }
 
