@@ -1,0 +1,12 @@
+.le-back {
+    height: 400px;
+    width: 100%;
+    opacity: .6;
+    background-color: blueviolet;
+}
+
+mat-grid-list{
+    height: 300px;
+    width: 300px;
+
+}
