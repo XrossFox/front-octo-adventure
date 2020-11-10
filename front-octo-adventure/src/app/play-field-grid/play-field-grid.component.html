@@ -1,0 +1,6 @@
+<mat-grid-list cols="5" rowHeight=1:1 gutterSize=0px>
+    <div *ngFor="let column of fGrid.FieldGrid">
+        <mat-grid-tile *ngFor="let fila of column"><img src={{fila}}></mat-grid-tile>
+    </div>
+
+</mat-grid-list>

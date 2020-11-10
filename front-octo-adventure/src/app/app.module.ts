@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { PlayFieldGridComponent } from './play-field-grid/play-field-grid.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PlayFieldGridComponent
   ],
   imports: [
     BrowserModule,
