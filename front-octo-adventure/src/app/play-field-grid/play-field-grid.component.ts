@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { PlayFieldGrid } from '../models/play-field-grid/field-grid-model';
 
 @Component({
@@ -8,13 +9,13 @@ import { PlayFieldGrid } from '../models/play-field-grid/field-grid-model';
 })
 export class PlayFieldGridComponent implements OnInit {
 
+  // this is the grid that represents the field or map
   fGrid: PlayFieldGrid;
-  public something: string = "assets/pics/catgirl2.jpg";
 
   constructor() { 
     this. fGrid = new PlayFieldGrid();
-    this.fGrid.columns = 4;
-    this.fGrid.rows = 6;
+    this.fGrid.columns = environment.columns;
+    this.fGrid.rows = environment.rows;
 
     for(let i = 0; i < this.fGrid.rows; i++){
       this.fGrid.FieldGrid.push([]);
