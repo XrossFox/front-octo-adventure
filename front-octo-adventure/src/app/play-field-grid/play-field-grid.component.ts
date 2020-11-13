@@ -21,7 +21,6 @@ export class PlayFieldGridComponent implements OnInit {
     this.fGrid.cssWidth = map.tileSize * this.fGrid.columns;
 
     this.generateFieldGrid();
-    //console.log(this.fGrid.FieldGrid);
   }
 
     /**
@@ -102,7 +101,6 @@ export class PlayFieldGridComponent implements OnInit {
         this.fGrid.FieldGrid[row].push(floorTiles[Math.floor(Math.random() * floorTiles.length)]);
       }
     }
-    console.log(this.fGrid.FieldGrid);
   }
 
   ngOnInit(): void {
