@@ -4,8 +4,6 @@
 
 export const environment = {
   production: false,
-  columns: 9,
-  rows: 9
 };
 
 /*
