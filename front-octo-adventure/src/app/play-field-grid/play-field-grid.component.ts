@@ -15,11 +15,13 @@ export class PlayFieldGridComponent implements OnInit {
 
   constructor() { 
     this. fGrid = new PlayFieldGrid();
-    this.fGrid.columns = environment.columns;
-    this.fGrid.rows = environment.rows;
+    this.fGrid.columns = map.cols;
+    this.fGrid.rows = map.rows;
+    this.fGrid.cssHeigth = map.tileSize * this.fGrid.rows
+    this.fGrid.cssWidth = map.tileSize * this.fGrid.columns;
 
     this.generateFieldGrid();
-    console.log(this.fGrid.FieldGrid);
+    //console.log(this.fGrid.FieldGrid);
   }
 
     /**
@@ -41,63 +43,66 @@ export class PlayFieldGridComponent implements OnInit {
     floorTiles.push(map.floorStone2);
 
     // insert columns
-    for(let x = 0; x < this.fGrid.columns; x++){
+    /**
+     * [row][column]
+     * I added this, because i was looping in the wrong direction xD
+     */
+    for(let row = 0; row < this.fGrid.rows; row++){
       this.fGrid.FieldGrid.push([]);
 
-      for(let y = 0; y < this.fGrid.rows; y++){
-
+      for(let col = 0; col < this.fGrid.columns; col++){
+        
         // if it's a upper corner tile, either left or right
-        if((x == 0 && y == 0) || (x == 0 && y == this.fGrid.rows-1)){
+        if((row == 0 && col == 0) || (row == 0 && col == this.fGrid.columns-1)){
           // its the left one
-          if(y == 0)
-            this.fGrid.FieldGrid[x].push(map.borderUpLeft);
+          if(col == 0)
+            this.fGrid.FieldGrid[row].push(map.borderUpLeft);
           // its the right one
           else 
-            this.fGrid.FieldGrid[x].push(map.borderUpRight);
-          // don't forget the continue to skip to next cycle, otherwise, it might collido with the forthcoming ifs
-          continue;
+            this.fGrid.FieldGrid[row].push(map.borderUpRight);
+          continue; // go-to next cycle jail, or add a tile where it shouldn't be 
         }
         
-        // if it's a down corner tile, either left or right
-        if((x == this.fGrid.columns-1 && y == 0) || (x == this.fGrid.columns-1 && y == this.fGrid.rows-1)){
-          if(y == 0)
-            this.fGrid.FieldGrid[x].push(map.borderDownLeft);
+        // if it's a lower corner tile, either left or right
+        if((row == this.fGrid.rows-1 && col == 0) || (row == this.fGrid.rows-1 && col == this.fGrid.columns-1)){
+          if(col == 0)
+            this.fGrid.FieldGrid[row].push(map.borderDownLeft);
           else
-            this.fGrid.FieldGrid[x].push(map.borderDownRight);
-          continue;
+            this.fGrid.FieldGrid[row].push(map.borderDownRight);
+          continue; // go-to next cycle jail, or add a tile where it shouldn't be 
         }
-        
+      
         // if it's the upper row, but not the corners
-        if((x == 0) && (y > 0 && y < this.fGrid.rows-1)){
-          this.fGrid.FieldGrid[x].push(map.borderUpMid);
-          continue;
+        if((row == 0) && (col > 0 && col < this.fGrid.columns-1)){
+          this.fGrid.FieldGrid[row].push(map.borderUpMid);
+          continue; // go-to next cycle jail, or add a tile where it shouldn't be 
         }
-        
         
         // if it's the lower row, but not the corners
-        if((x == this.fGrid.columns-1) && (y > 0 && y < this.fGrid.rows-1)){
-          this.fGrid.FieldGrid[x].push(map.borderDownMid);
-          continue;
+        if((row == this.fGrid.rows-1) && (col > 0 && col < this.fGrid.columns-1)){
+          this.fGrid.FieldGrid[row].push(map.borderDownMid);
+          continue; // go-to next cycle jail, or add a tile where it shouldn't be 
         }
-
+        
         // if it's the left/right border but not of the first/last row. weirdest-ass if ever. might as well do ML with this shit
         if(
-          (y == 0 && (x > 0 && x < this.fGrid.columns-1)) // y is 0, so its left border, but x is neither 0 (first row) or the last row
+          (col == 0 && (row > 0 && row < this.fGrid.rows-1)) // col is 0, so its left border, but row is neither 0 (first row) or the last row
           || // or
-          (y == this.fGrid.rows-1 && (x > 0 && x < this.fGrid.columns-1)) // same as above, just this time, it's the right border 
+          (col == this.fGrid.columns-1 && (row > 0 && row < this.fGrid.rows-1)) // same as above, just this time, it's the right border 
           ){
-              if(y == 0) // left border
-                this.fGrid.FieldGrid[x].push(map.borderLeft);
+              if(col == 0) // left border
+                this.fGrid.FieldGrid[row].push(map.borderLeft);
               else // right border
-                this.fGrid.FieldGrid[x].push(map.borderRight);
-              continue; // just in case
+                this.fGrid.FieldGrid[row].push(map.borderRight);
+              continue; // go-to next cycle jail, or add a tile where it shouldn't be 
           }
-
-        // if you rechead this point, it means you not anywhere in the upper row, lower row, first column nor last column
+          
+        // if you rechead this point, it means you are not anywhere in the upper row, lower row, first column nor last column
         // so go full yolo and pick a tile randomly from the floor tiles.
-        this.fGrid.FieldGrid[x].push(floorTiles[Math.floor(Math.random() * floorTiles.length)]);
+        this.fGrid.FieldGrid[row].push(floorTiles[Math.floor(Math.random() * floorTiles.length)]);
       }
     }
+    console.log(this.fGrid.FieldGrid);
   }
 
   ngOnInit(): void {
