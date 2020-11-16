@@ -20,7 +20,7 @@ export class PlayFieldGridComponent implements OnInit {
     this.fGrid.cssHeigth = map.tileSize * this.fGrid.rows
     this.fGrid.cssWidth = map.tileSize * this.fGrid.columns;
 
-    this.generateFieldGrid();
+    this.generateFieldGrid(15,20/*this.fGrid.rows, this.fGrid.columns*/);
   }
 
     /**
@@ -31,7 +31,7 @@ export class PlayFieldGridComponent implements OnInit {
    * 
    * Generates a random play field grid. Sets te borders accordingly and whatever is in between is randomized.
    */
-  private generateFieldGrid() {
+  private generateFieldGrid(rows: number, columns: number) {
 
     // tiles that are floor
     let floorTiles : string [] = []; 
@@ -46,13 +46,13 @@ export class PlayFieldGridComponent implements OnInit {
      * [row][column]
      * I added this, because i was looping in the wrong direction xD
      */
-    for(let row = 0; row < this.fGrid.rows; row++){
+    for(let row = 0; row < rows; row++){
       this.fGrid.FieldGrid.push([]);
 
-      for(let col = 0; col < this.fGrid.columns; col++){
+      for(let col = 0; col < columns; col++){
         
         // if it's a upper corner tile, either left or right
-        if((row == 0 && col == 0) || (row == 0 && col == this.fGrid.columns-1)){
+        if((row == 0 && col == 0) || (row == 0 && col == columns-1)){
           // its the left one
           if(col == 0)
             this.fGrid.FieldGrid[row].push(map.borderUpLeft);
@@ -63,7 +63,7 @@ export class PlayFieldGridComponent implements OnInit {
         }
         
         // if it's a lower corner tile, either left or right
-        if((row == this.fGrid.rows-1 && col == 0) || (row == this.fGrid.rows-1 && col == this.fGrid.columns-1)){
+        if((row == rows-1 && col == 0) || (row == rows-1 && col == columns-1)){
           if(col == 0)
             this.fGrid.FieldGrid[row].push(map.borderDownLeft);
           else
@@ -72,22 +72,22 @@ export class PlayFieldGridComponent implements OnInit {
         }
       
         // if it's the upper row, but not the corners
-        if((row == 0) && (col > 0 && col < this.fGrid.columns-1)){
+        if((row == 0) && (col > 0 && col < columns-1)){
           this.fGrid.FieldGrid[row].push(map.borderUpMid);
           continue; // go-to next cycle jail, or add a tile where it shouldn't be 
         }
         
         // if it's the lower row, but not the corners
-        if((row == this.fGrid.rows-1) && (col > 0 && col < this.fGrid.columns-1)){
+        if((row == rows-1) && (col > 0 && col < columns-1)){
           this.fGrid.FieldGrid[row].push(map.borderDownMid);
           continue; // go-to next cycle jail, or add a tile where it shouldn't be 
         }
         
         // if it's the left/right border but not of the first/last row. weirdest-ass if ever. might as well do ML with this shit
         if(
-          (col == 0 && (row > 0 && row < this.fGrid.rows-1)) // col is 0, so its left border, but row is neither 0 (first row) or the last row
+          (col == 0 && (row > 0 && row < rows-1)) // col is 0, so its left border, but row is neither 0 (first row) or the last row
           || // or
-          (col == this.fGrid.columns-1 && (row > 0 && row < this.fGrid.rows-1)) // same as above, just this time, it's the right border 
+          (col == columns-1 && (row > 0 && row < rows-1)) // same as above, just this time, it's the right border 
           ){
               if(col == 0) // left border
                 this.fGrid.FieldGrid[row].push(map.borderLeft);
