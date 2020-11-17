@@ -9,6 +9,7 @@ export class GridDirectDirective implements OnInit {
   constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
 
   /**
+   *     appGridDirect [fieldGrid]="fGrid.FieldGrid"
    * On init creates the mat-grid-tiles dynamically accordingly to the received field grid array
    * Each mat-grid-tile has a img tag with the actual image that is the tile.
    */

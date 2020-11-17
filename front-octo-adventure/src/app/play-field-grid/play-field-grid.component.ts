@@ -20,7 +20,7 @@ export class PlayFieldGridComponent implements OnInit {
     this.fGrid.cssHeigth = map.tileSize * this.fGrid.rows
     this.fGrid.cssWidth = map.tileSize * this.fGrid.columns;
 
-    this.generateFieldGrid(15,20/*this.fGrid.rows, this.fGrid.columns*/);
+    this.generateFieldGrid(10,10/*this.fGrid.rows, this.fGrid.columns*/);
   }
 
     /**

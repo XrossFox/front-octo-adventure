@@ -1,6 +1,6 @@
 {
-    "cols": 20,
-    "rows": 15,
+    "cols": 10,
+    "rows": 10,
     "tileSize": 32,
     "borderUpLeft":"assets/tilesets/dungeon/tile000.png",
     "borderUpMid":"assets/tilesets/dungeon/tile001.png",
