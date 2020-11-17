@@ -6,4 +6,5 @@ export class PlayFieldGrid{
     public FieldGrid : string[][] = [];
     public cssHeigth: number;
     public cssWidth: number;
+    public cssTileSize: number;
 }

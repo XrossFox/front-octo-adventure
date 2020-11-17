@@ -6,6 +6,8 @@ import { Directive, Renderer2, ElementRef, OnInit, Input } from '@angular/core';
 export class GridDirectDirective implements OnInit {
 
   @Input() fieldGrid : string[][];
+  @Input() height: number;
+
   constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
 
   /**
@@ -17,6 +19,10 @@ export class GridDirectDirective implements OnInit {
 
     for(let i = 0; i < this.fieldGrid.length; i++){
 
+      let div = this.renderer.createElement("div");
+      // set vertical size of the div, otherwise a weird ass space between rows appear
+      this.renderer.setAttribute(div, "style", "height: SIZEpx;".replace("SIZE",this.height.toString()));
+
       for(let j = 0; j < this.fieldGrid[i].length; j++){
 
         let tile = this.renderer.createElement("mat-grid-tile");
@@ -27,10 +33,14 @@ export class GridDirectDirective implements OnInit {
         //append img tag to mat-grid-tile
         this.renderer.appendChild(tile, img);
         // append mat-grid-tile to native element (that is, the parent div in this case)
-        this.renderer.appendChild(this.elementRef.nativeElement, tile);
-
+        this.renderer.appendChild(div, tile);
+        
       }
+
+      this.renderer.appendChild(this.elementRef.nativeElement, div);
     }
+
+    
 
   }
 
