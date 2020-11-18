@@ -12,16 +12,19 @@ export class PlayFieldGridComponent implements OnInit {
 
   // this is the grid that represents the field or map
   fGrid: PlayFieldGrid;
+  readonly displayRows : number = map.displayRows;
+  readonly displayCols : number = map.displayCols;
+
 
   constructor() { 
     this. fGrid = new PlayFieldGrid();
-    this.fGrid.columns = map.cols;
-    this.fGrid.rows = map.rows;
-    this.fGrid.cssHeigth = map.tileSize * this.fGrid.rows
-    this.fGrid.cssWidth = map.tileSize * this.fGrid.columns;
+    this.fGrid.columns = map.fieldCols;
+    this.fGrid.rows = map.fieldRows;
+    this.fGrid.cssHeigth = map.tileSize * this.displayRows;
+    this.fGrid.cssWidth = map.tileSize * this.displayCols;
     this.fGrid.cssTileSize = map.tileSize;
 
-    this.generateFieldGrid(16,15/*this.fGrid.rows, this.fGrid.columns*/);
+    this.generateFieldGrid(this.fGrid.rows,this.fGrid.columns);
   }
 
     /**
