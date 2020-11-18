@@ -7,12 +7,20 @@ The field grid is meant to be the your playground. It's a Angular Material that 
 To set the size of the matrix show set the following variables in the `src/assets/asset-mapping/map.json` file:
 ```json
 {
-  "columns": 9,
-  "rows": 9,
-  "tileSize": 32
+    "displayRows": 10,
+    "displayCols": 10,
+    "fieldRows": 9,
+    "fieldCols": 9,
+    "tileSize": 32,
 }
 ```
-These constants must be of type **number**.
+These constants must be of type **number**. Also note that the display values are for the displayed area of the actual size of the field grid. That is, only a selected area of the total matrix is displayed. The field grid is meant to be panned as needed. In case the field grid matrix is smaller that the display area, then the remaining space is filled by empty tiles (also mapped in the json file).
+
+![10x10 10x10](front-octo-adventure\screenshots\10x10_10x10FrontOctoAdventure.png?raw=true "A 9 by 9 field displayed in a 10 by 10 area")
+
+![10x10 9x9](front-octo-adventure\screenshots\10x10_9x9FrontOctoAdventure.png?raw=true "A 9 by 9 field displayed in a 10 by 10 area")
+
+![10x10 15x15](front-octo-adventure\screenshots\10x10_15x15FrontOctoAdventure.png?raw=true "A 15 by 15 field displayed in a 10 by 10 area")
 
 ## Mapping Tiles
 
@@ -41,7 +49,6 @@ In the same file: `src/assets/asset-mapping/map.json` you must add the tiles you
     "chestClosed":"assets/tilesets/chests/tile001.png"
 }
 ```
-
 
 # Angular CLI auto-generated stuff (just in case)
 

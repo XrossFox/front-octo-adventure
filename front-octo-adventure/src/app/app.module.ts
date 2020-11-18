@@ -7,11 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { PlayFieldGridComponent } from './play-field-grid/play-field-grid.component';
+import { GridDirectDirective } from './grid-direct.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlayFieldGridComponent
+    PlayFieldGridComponent,
+    GridDirectDirective
   ],
   imports: [
     BrowserModule,
