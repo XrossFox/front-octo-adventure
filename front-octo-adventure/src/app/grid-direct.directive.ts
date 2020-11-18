@@ -12,8 +12,10 @@ export class GridDirectDirective implements OnInit {
   constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
 
   /**
-   * On init creates the mat-grid-tiles dynamically accordingly to the received field grid array
-   * Each mat-grid-tile has a img tag with the actual image that is the tile.
+   * On call, generates the html to display the field grid. It's a mat-grid-list in which
+   * each row is in it's own div, so the vertical size can be set according to the tile size. Each individual tile
+   * is a child img node to a mat-grid-tile element. If the field grid is bigger than the actual matrix, it stops
+   * at the display size max index. If it's smaller, then the actual matrix is padded with empty tiles.
    */
   ngOnInit(): void {
 
