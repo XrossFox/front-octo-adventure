@@ -11,6 +11,16 @@ export class GridDirectDirective implements OnInit {
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
 
+/**
+ * 
+<mat-grid-list 
+    appGridDirect [fieldGrid]="fGrid.FieldGrid" [height]="fGrid.cssTileSize"
+    cols="{{displayCols}}" 
+    rowHeight=1:1
+    gutterSize=0px 
+    style="width: {{fGrid.cssWidth}}px; height: {{fGrid.cssHeigth}}px;">
+</mat-grid-list>
+ */
   /**
    * On call, generates the html to display the field grid. It's a mat-grid-list in which
    * each row is in it's own div, so the vertical size can be set according to the tile size. Each individual tile

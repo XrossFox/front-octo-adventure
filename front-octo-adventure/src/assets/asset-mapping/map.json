@@ -24,5 +24,6 @@
     "borderDownMid":"assets/tilesets/dungeon/tile033.png",
     "borderDownRight":"assets/tilesets/dungeon/tile034.png",
     "chestClosed":"assets/tilesets/chests/tile001.png",
-    "blankTile": "assets/tilesets/dungeon/tile272.png"
+    "blankTile": "assets/tilesets/dungeon/tile272.png",
+    "GetFieldMatrixURL": "https://localhost:44307/fieldmatrix/5/5"
 }
