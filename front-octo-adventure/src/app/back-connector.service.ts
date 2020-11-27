@@ -19,6 +19,12 @@ export class BackConnectorService {
    * in the map.json.
    */
   public getFieldMatrix():Observable<ResponseWrapper<PlayFieldGrid>>{
+    this.client.get<ResponseWrapper<PlayFieldGrid>>(tileMapping.GetFieldMatrixURL).subscribe((data : ResponseWrapper<PlayFieldGrid>) =>{
+      console.log("ongoing");
+      console.log(data.message);
+      console.log(data.body);
+      console.log(data.body.fieldGrid[0][0]);
+    });
     return this.client.get<ResponseWrapper<PlayFieldGrid>>(tileMapping.GetFieldMatrixURL);
   }
 }

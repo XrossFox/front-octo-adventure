@@ -1,5 +1,8 @@
 import { Directive, Renderer2, ElementRef, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import map from "../assets/asset-mapping/map.json";
+import { PlayFieldGrid } from './models/play-field-grid/field-grid-model';
+import { ResponseWrapper } from './models/ResponseWrapper/ResponseWrapper';
 
 @Directive({
   selector: '[appGridDirect]'
@@ -11,16 +14,6 @@ export class GridDirectDirective implements OnInit {
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
 
-/**
- * 
-<mat-grid-list 
-    appGridDirect [fieldGrid]="fGrid.FieldGrid" [height]="fGrid.cssTileSize"
-    cols="{{displayCols}}" 
-    rowHeight=1:1
-    gutterSize=0px 
-    style="width: {{fGrid.cssWidth}}px; height: {{fGrid.cssHeigth}}px;">
-</mat-grid-list>
- */
   /**
    * On call, generates the html to display the field grid. It's a mat-grid-list in which
    * each row is in it's own div, so the vertical size can be set according to the tile size. Each individual tile
@@ -28,6 +21,8 @@ export class GridDirectDirective implements OnInit {
    * at the display size max index. If it's smaller, then the actual matrix is padded with empty tiles.
    */
   ngOnInit(): void {
+
+    console.log(this.fieldGrid);
 
     for(let i = 0; i < map.displayRows; i++){
 

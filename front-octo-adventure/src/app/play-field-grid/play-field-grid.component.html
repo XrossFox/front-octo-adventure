@@ -1,6 +1,8 @@
-<div *ngIf="fGrid">
+<div *ngIf="(responseWrapper$ | async) as response">
+    <p>{{response.message}}</p>
+    <p>{{response.body.fieldGrid}}</p>
     <mat-grid-list 
-        appGridDirect [fieldGrid]="fGrid.FieldGrid" [height]="cssTileSize"
+        appGridDirect [fieldGrid]="response.body.fieldGrid" [height]="cssTileSize"
         cols="{{displayCols}}" 
         rowHeight=1:1
         gutterSize=0px 
