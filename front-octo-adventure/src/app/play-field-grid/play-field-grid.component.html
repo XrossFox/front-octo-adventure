@@ -1,6 +1,4 @@
 <div *ngIf="(responseWrapper$ | async) as response">
-    <p>{{response.message}}</p>
-    <p>{{response.body.fieldGrid}}</p>
     <mat-grid-list 
         appGridDirect [fieldGrid]="response.body.fieldGrid" [height]="cssTileSize"
         cols="{{displayCols}}" 

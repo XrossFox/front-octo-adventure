@@ -12,7 +12,6 @@ import { Observable } from 'rxjs';
 })
 export class PlayFieldGridComponent implements OnInit {
 
-  // this is the grid that represents the field or map
   readonly displayRows : number;
   readonly displayCols : number;
   readonly cssHeigth : number;
@@ -21,13 +20,13 @@ export class PlayFieldGridComponent implements OnInit {
   readonly responseWrapper$ : Observable<ResponseWrapper<PlayFieldGrid>>;
 
   constructor(public backService: BackConnectorService) { 
-
+    // inits the grid and sends the request to the back end on instance creation
     this.displayRows  = map.displayRows;
     this.displayCols  = map.displayCols;
     this.cssHeigth  = map.tileSize * this.displayRows;
     this.cssWidth  = map.tileSize * this.displayCols;
     this.cssTileSize  = map.tileSize;
-    this.responseWrapper$ = backService.getFieldMatrix();
+    this.responseWrapper$ = backService.getFieldMatrix(map.fieldRows, map.fieldCols);
 
   }
 

@@ -15,16 +15,12 @@ export class BackConnectorService {
   constructor( private client : HttpClient ) { }
 
   /**
-   * Sends a get request at the GetFieldMatrixURL property set
-   * in the map.json.
+   * Gets field matrix by sending a GET request to the back-end URL mapped in the map.json
+   * @param rows 
+   * @param columns 
+   * @returns An Observable of the response mapped to the propper object
    */
-  public getFieldMatrix():Observable<ResponseWrapper<PlayFieldGrid>>{
-    this.client.get<ResponseWrapper<PlayFieldGrid>>(tileMapping.GetFieldMatrixURL).subscribe((data : ResponseWrapper<PlayFieldGrid>) =>{
-      console.log("ongoing");
-      console.log(data.message);
-      console.log(data.body);
-      console.log(data.body.fieldGrid[0][0]);
-    });
-    return this.client.get<ResponseWrapper<PlayFieldGrid>>(tileMapping.GetFieldMatrixURL);
+  public getFieldMatrix(rows: number, columns: number):Observable<ResponseWrapper<PlayFieldGrid>>{
+    return this.client.get<ResponseWrapper<PlayFieldGrid>>(tileMapping.GetFieldMatrixURL+"/"+rows+"/"+columns);
   }
 }
