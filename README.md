@@ -27,28 +27,33 @@ These constants must be of type **number**. Also note that the display values ar
 In the same file: `src/assets/asset-mapping/map.json` you must add the tiles you have available. The tiles themselves must be placed `src/assets/tilesets/<yout-tiles-directory>`. Then you must map your tiles like this:
 ```json
 {
-    "borderUpLeft":"assets/tilesets/dungeon/tile000.png",
-    "borderUpMid":"assets/tilesets/dungeon/tile001.png",
-    "borderUpRight":"assets/tilesets/dungeon/tile002.png",
-    "borderLeft":"assets/tilesets/dungeon/tile016.png",
-    "floorGray":"assets/tilesets/dungeon/tile017.png",
-    "floorStone1":"assets/tilesets/dungeon/tile092.png",
-    "floorStone2":"assets/tilesets/dungeon/tile088.png",
-    "floorStone3":"assets/tilesets/dungeon/tile089.png",
-    "floorStone4":"assets/tilesets/dungeon/tile090.png",
-    "floorStone5":"assets/tilesets/dungeon/tile091.png",
-    "floorDirt1":"assets/tilesets/dungeon/tile170.png",
-    "floorDirt2":"assets/tilesets/dungeon/tile171.png",
-    "floorDirt3":"assets/tilesets/dungeon/tile172.png",
-    "floorDirt4":"assets/tilesets/dungeon/tile173.png",
-    "floorDirt5":"assets/tilesets/dungeon/tile174.png",
-    "borderRight":"assets/tilesets/dungeon/tile018.png",
-    "borderDownLeft":"assets/tilesets/dungeon/tile032.png",
-    "borderDownMid":"assets/tilesets/dungeon/tile033.png",
-    "borderDownRight":"assets/tilesets/dungeon/tile034.png",
-    "chestClosed":"assets/tilesets/chests/tile001.png"
+    "CUL":"assets/tilesets/dungeon/tile000.png",
+    "UpB":"assets/tilesets/dungeon/tile001.png",
+    "CUR":"assets/tilesets/dungeon/tile002.png",
+    "LfB":"assets/tilesets/dungeon/tile016.png",
+    "RgB":"assets/tilesets/dungeon/tile018.png",
+    "CDL":"assets/tilesets/dungeon/tile032.png",
+    "LwB":"assets/tilesets/dungeon/tile033.png",
+    "CDR":"assets/tilesets/dungeon/tile034.png",
+    "ST1":"assets/tilesets/dungeon/tile092.png",
+    "ST2":"assets/tilesets/dungeon/tile088.png",
+    "ST3":"assets/tilesets/dungeon/tile089.png",
+    "ST4":"assets/tilesets/dungeon/tile090.png",
+    "ST5":"assets/tilesets/dungeon/tile091.png",
+    "DR1":"assets/tilesets/dungeon/tile170.png",
+    "DR2":"assets/tilesets/dungeon/tile171.png",
+    "DR3":"assets/tilesets/dungeon/tile172.png",
+    "DR4":"assets/tilesets/dungeon/tile173.png",
+    "DR5":"assets/tilesets/dungeon/tile174.png",
+    "blankTile": "assets/tilesets/dungeon/tile272.png"
 }
 ```
+
+Remember that the **keys** of the tile values must match the **values** of the map file in the back-end.
+
+## Back-End URL
+To set up the base URL for the back end, in the map.json file set the property `GetFieldMatrixURL` with the actual value (and port).
+`"GetFieldMatrixURL": "https://localhost:44307/fieldmatrix"`
 
 # Angular CLI auto-generated stuff (just in case)
 
