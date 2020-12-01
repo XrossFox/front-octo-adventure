@@ -1,7 +1,9 @@
-<mat-grid-list 
-    appGridDirect [fieldGrid]="fGrid.FieldGrid" [height]="fGrid.cssTileSize"
-    cols="{{displayCols}}" 
-    rowHeight=1:1
-    gutterSize=0px 
-    style="width: {{fGrid.cssWidth}}px; height: {{fGrid.cssHeigth}}px;">
-</mat-grid-list>
+<div *ngIf="(responseWrapper$ | async) as response">
+    <mat-grid-list 
+        appGridDirect [fieldGrid]="response.body.fieldGrid" [height]="cssTileSize"
+        cols="{{displayCols}}" 
+        rowHeight=1:1
+        gutterSize=0px 
+        style="width: {{cssWidth}}px; height: {{cssHeigth}}px;">
+    </mat-grid-list>
+</div>
